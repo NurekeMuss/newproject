@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Articles</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+
+    .article-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .article {
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .article h2 {
+        color: #333;
+    }
+
+    .article p {
+        color: #666;
+    }
+
+    .article a {
+        color: #4caf50;
+        text-decoration: none;
+    }
+</style>
+<body>
+    <h1>Latest News</h1>
+    <div class="article-container">
+        <a href="./historyNews">History</a>
+        <% if (articles && articles.length > 0) { %>
+            <% articles.forEach(article => { %>
+                <div class="article">
+                    <h2><%= article.title %></h2>
+                    <p><%= article.description %></p>
+                    <a href="<%= article.url %>" target="_blank">Read more</a>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p><%= message %></p>
+        <% } %>
+        
+    </div>
+</body>
+</html>

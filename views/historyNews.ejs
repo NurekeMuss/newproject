@@ -1,0 +1,58 @@
+<!-- views/newsHistory.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        li:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>News History</h2>
+    <% if (newsHistory.length > 0) { %>
+        <ul>
+            <% newsHistory.forEach(entry => { %>
+                <li>
+                      <p>Title: <%= entry.title %></p>
+                    <p>Description: <%= entry.description %></p>
+                    <p>Publish Date: <%= new Date(entry.publishedAt).toLocaleDateString() %></p> <!-- Display publish date -->
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No news history available.</p>
+    <% } %>
+</body>
+</html>

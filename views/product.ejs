@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+     button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        a:hover{
+            text-decoration: none;
+            color: white;
+        }
+</style>
+<body>
+    <div class="container-fluid mt-5">
+        <center><h3>Welcome to Shop</h3></center>
+        <button class="back"><a href="/home">Go Back</a></button>
+        <div class="row" id="product-row">
+           
+            <% if (productData && productData.length > 0) { %>
+                <% productData.forEach(product => { %>
+                    <div class="col-md-3 mt-4">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="<%= product.thumbnail %>" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= product.title %></h5>
+                                <p class="card-text"><%= product.description %></p>
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        Price: $<%= product.price %> - Discount: <%= product.discountPercentage %>%</small>
+                                </p>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No product data available</p>
+            <% } %>
+        </div>
+    </div>
+    <!-- Include Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2fksb" crossorigin="anonymous"></script>
+</body>
+</html>

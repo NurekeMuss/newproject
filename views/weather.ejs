@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back {
+            margin-top: 50px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #map {
+            margin-top: 50px;
+            width: 650px;
+            height: 300px;
+            border-radius: 35px;
+        }
+    </style>
+</head>
+<body>
+    <h2>City Info</h2>
+    <form action="/weather" method="post">
+        <input type="text" id="city" name="city" placeholder="Enter city" required>
+        <br><br>
+        <button type="submit">Submit</button>
+        <div id='map'></div>
+        <button class="back"><a href="/home">Go Back</a></button>
+        <button class="back"><a href="/historyWeather">History</a></button>
+    </form>
+
+</body>
+<script src="../src/map.js"></script>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibnVyYWRpbG11c3NhayIsImEiOiJjbHJvdGk4ZDgwaHJyMmhtaWt3OWN4cXJ0In0.wtDBv6yGFKwrJfEFj4jDig';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        center: [70, 50], // starting position [lng, lat]
+        zoom: 3, // starting zoom
+    });
+</script>
+</html>
